@@ -1,5 +1,16 @@
-[![pub package](https://img.shields.io/pub/v/flutter_blue.svg)](https://pub.dartlang.org/packages/flutter_blue)
-[![Chat](https://img.shields.io/discord/634853295160033301.svg?style=flat-square&colorB=758ED3)](https://discord.gg/Yk5Efra)
+### This fork is being added Pull Requests (PR) from the original package also new features.
+The owner is unavailable to continue updating this package until a further notice.
+
+[![Chat](https://img.shields.io/discord/634853295160033301.svg?style=flat-square&colorB=758ED3)](https://discord.gg/Yk5Efra) <- Use discord channel for help
+
+
+
+### Add this fork to your pubspec.yaml file
+```
+flutter_blue:
+    git: https://github.com/boskokg/flutter_blue
+```
+
 
 <br>
 <p align="center">
@@ -58,6 +69,12 @@ await device.connect();
 // Disconnect from device
 device.disconnect();
 ```
+### Turn on Bluetooth
+```dart
+// Turn On Bluetooth
+bool isTurningOn = await flutterBlue.turnOn();
+// Note you have to listen to state for monitor changes
+```
 
 ### Discover services
 ```dart
@@ -103,8 +120,8 @@ characteristic.value.listen((value) {
 
 ### Read the MTU and request larger size
 ```dart
-final mtu = await device.mtu.first;
-await device.requestMtu(512);
+final currentMtu = await device.mtu.first;
+final newMtu = await device.requestMtu(512);
 ```
 Note that iOS will not allow requests of MTU size, and will always try to negotiate the highest possible MTU (iOS supports up to MTU size 185)
 
